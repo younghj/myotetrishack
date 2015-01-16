@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>test for myo</title>
+        <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+        <script src="myo.js"></script>
+    </head>
+    <div id="content"><div id="content-inner">
+
+            <div id="alpha">
+                <div id="game-wrap">
+                    <div class="prose">
+                        <h1>Tetris</h1>
+                        <p>
+                        A simple tetris implementation—using the HTML5 canvas element—that lets you choose from different
+                        modes for selecting the next piece. You might have the most fun with “nice” and “evil”.
+                        Also, “autopilot” can be fun to watch.
+                        </p>
+                    </div>
+                    <div class="clr">
+                        <canvas width="200" height="400" id="game" class="left">If you can read this, your browser doesn't support the canvas element. Please upgrade to a better browser.</canvas>
+                        <canvas width="100" height="450" id="info" class="left"></canvas>
+                    </div>
+                    <p>
+                    Move the shapes with the arrow keys. Rotate piece with the up key,
+                    <strong>z</strong>, and <strong>x</strong>. Pause the game with <strong>p</strong>
+                    and toggle autopilot mode with the back tick (the key that has <strong>~</strong> on it).
+                    </p>
+                </div>
+
+            </div>
+            <script src="tetris/tetris.js"></script>
+            <script src="test.js"></script>
+        </div>
+    </div>   
+</html>

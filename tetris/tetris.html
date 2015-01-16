@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <!-- cchd Sat, 10 Jan 2015 15:06:15 -0500 -->
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta name="description" content="A simple implementation of tetris using the HTML5 canvas with the option to change how new pieces are selected between random, evil, nice, or individual shapes." />
+        <meta name="author" content="Peter Coles" />
+        <title>Tetris - HTML5 - Peter Coles</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="/media/css/base/screen.css" />
+        <style>
+#game-wrap {
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    padding: 19px 20px 39px;
+    width: 500px;
+    background: #eee;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, .2);
+    -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, .2);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .2);
+}
+  #game { border: 2px solid #000; margin-right: 20px; background: #fff; }
+        </style>
+        <link rel="SHORTCUT ICON" href="/media/img/favicon.ico" />
+
+        <!-- start Mixpanel --><script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="//cdn.mxpnl.com/libs/mixpanel-2.2.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
+        mixpanel.init("ea3eaa7cb3103da36d6cba3105ce1722");</script><!-- end Mixpanel -->
+    </head>
+    <body class="blog tetris">
+        <div id="wrapper">
+            <div id="header"><s></s><div id="header-inner">
+                    <h2 id="logo"><a href="/">Mr Coles</a> <span id="sub-logo">Peter Coles’ blog</span></h2>
+
+                    <button id="nav-toggle" type="button" class="btn btn-navbar" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <ul id="nav">
+                        <li><a id="search-link" href="/search/">Search</a></li>
+                        <li><a href="/archive/">Archive</a></li>
+                        <li><a href="http://shop.mrcoles.com">Shop</a></li>
+                        <li class="last"><a href="/peter-coles/">About</a></li>
+                    </ul>
+                </div></div>
+                <div id="content"><div id="content-inner">
+
+                        <div id="alpha">
+                            <div id="game-wrap">
+                                <div class="prose">
+                                    <h1>Tetris</h1>
+                                    <p>
+                                    A simple tetris implementation—using the HTML5 canvas element—that lets you choose from different
+                                    modes for selecting the next piece. You might have the most fun with “nice” and “evil”.
+                                    Also, “autopilot” can be fun to watch.
+                                    </p>
+                                </div>
+                                <div class="clr">
+                                    <canvas width="200" height="400" id="game" class="left">If you can read this, your browser doesn't support the canvas element. Please upgrade to a better browser.</canvas>
+                                    <canvas width="100" height="450" id="info" class="left"></canvas>
+                                </div>
+                                <p>
+                                Move the shapes with the arrow keys. Rotate piece with the up key,
+                                <strong>z</strong>, and <strong>x</strong>. Pause the game with <strong>p</strong>
+                                and toggle autopilot mode with the back tick (the key that has <strong>~</strong> on it).
+                                </p>
+                            </div>
+
+                            <div class="prose dim small" style="font-size: 8px; line-height: 10px;">
+                                TODO:
+                                <ul>
+                                    <li>Better autopilot algo</li>
+                                    <li>Make sure piece rotations go the right way</li>
+                                    <li>Allow rotating while stuck to the side</li>
+                                </ul>
+                            </div>
+
+                            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+                            <script>!window.jQuery && document.write(unescape('%3Cscript src="/media/js/jquery-1.4.4.min.js"%3E%3C/script%3E'))</script>
+
+                            <script src="/media/js/tetris.js"></script>
+
+                            <div id="disqus_thread"></div>
+                            <script>
+var disqus_shortname = 'mrcoles'; // required: replace example with your forum shortname
+var disqus_identifier = 'mrcoles_tetris_app';
+//var disqus_url = 'http://mrcoles.com/tetris/';
+
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+                        </div>
+
+
+                        <div id="beta">
+                            <div class="widget">
+                                <p class="profile-img"><img src="/media/img/peter-coles.png" alt="Peter Coles" title="Peter Coles" /></p>
+                                <div class="pad-bot about-text">
+                                    <h2>Peter Coles</h2>
+                                    <p>is a software engineer who lives in NYC, worked at Hunch/eBayNYC, and blogs here.<br> <a href="/peter-coles/">More about Peter &raquo;</a></p>
+                                </div>
+                                <p>
+                                <a href="http://twitter.com/lethys">@lethys</a> &middot;
+                                <a href="https://github.com/mrcoles">github</a> &middot;
+
+
+                                <a href="/feeds/latest/">rss</a>
+
+                                <script>document.write(' &middot; <a href="'+'mai'+'l_to:pet_er_@mrc_oles.c_om'.split('_').join('')+'">contact</a>')</script>
+                                </p>
+                            </div>
+
+                            <div class="widget shop-ad">
+                                <a href="http://shop.mrcoles.com/I-ny-ny--American-Apparel-Mens-T-Shirt/_p_7426465">
+                                    <img src="/media/img/i-ny-ny-shirt.png"><br>
+                                    Support MrColes.com, buy a T!
+                                </a>
+                            </div>
+
+                            <div class="widget flush">
+                                <a href="https://mayday.us/"><img src="https://mayday.us/images/mayday-genericshare.jpg" alt="It’s time to get big money out of politics. Join the kick-started campaign to put government back in the hands of the people. Pledge mayday.us now"></a>
+                            </div>
+
+                            <div class="widget last">
+                                <p class="strong">Popular Posts:</p>
+                                <ul class="activities">
+                                    <li><a href="http://mrcoles.com/demo/markdown-css/">Markdown CSS</a></li>
+                                    <li><a href="http://mrcoles.com/blog/css-unminify/">A CSS Unminifier</a></li>
+                                    <li><a href="http://mrcoles.com/bookmarklet/">Bookmarklet Creator</a></li>
+                                    <li><a href="http://mrcoles.com/blog/html5ify-your-existing-code-base/">HTML5ify your existing code base</a></li>
+                                    <li><a href="http://mrcoles.com/facebook-graph-api-explorer/">Facebook Graph API Explorer</a></li>
+
+                                </ul>
+
+                                <br>
+                                <p class="strong">Fun:</p>
+                                <ul class="activities">
+                                    <li><a href="http://picdinner.com/">PicDinner</a></li>
+                                    <li><a href="/piano/">JavaScript Piano</a></li>
+                                    <li><a href="/dragondrop/">Dragon Drop <small style="font-size:11px;vertical-align:top">(Drag &amp; Drop)</small></a></li>
+                                    <li><a href="/tetris/">HTML5 Tetris</a></li>
+                                    <li><a href="/low-res-paint/">Low Res Paint</a></li>
+                                    <li><a href="/favicon-creator/">Favicon Creator</a></li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                        <div style="clear:both;"><!-- --></div><form id="search-drop" action="/search/"><div><input class="text border-box" type="text" name="q"/><button class="border-box" type="submit">Search</button></div></form></div></div>
+        </div>
+        <div id="footer"><div id="footer-inner"><p>mrcoles.com &copy; 2014</p></div></div>
+
+
+        <script>
+(function() {
+    var startTime = (new Date).getTime();
+    mixpanel.track('View Page', {
+        'Page title': document.title
+    });
+    mixpanel.track_links('.shop-ad a', 'Click Shop Ad', function() {
+        var isSideBar = (window.innerWidth > 850);
+        return {
+            'time on page': (new Date).getTime() - startTime,
+            'in side bar': isSideBar
+        };
+    });
+})();
+        </script>
+
+
+
+        <script src="/media/js/main.js"></script>
+
+        <script>
+var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-4202460-2']); _gaq.push(['_trackPageview']);
+(function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = 'http://www.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+        </script>
+
+        <script>(function(d,g) {
+var s = d[g]('search-link');
+if (s) {
+    s.onclick = function() {
+
+        var f = d[g]('search-drop'), n = f.className;
+        if (n=='show') {
+            f.className = '';
+        } else {
+            f.className = 'show';
+            f.getElementsByTagName('input')[0].focus();
+        }
+
+        return false;
+    }
+}
+})(document,'getElementById')</script>
+        <!-- cchd Sat, 10 Jan 2015 15:06:15 -0500 -->
+    </body>
+</html>
